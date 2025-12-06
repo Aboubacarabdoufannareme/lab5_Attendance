@@ -1,0 +1,555 @@
+/* Student Dashboard - Animated Light Blue Theme */
+
+/* New Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Body with animated gradient background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 50%, #e6f2ff 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Floating background elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(135, 206, 250, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(176, 224, 230, 0.25) 0%, transparent 50%);
+    z-index: -1;
+    animation: float 8s ease-in-out infinite;
+}
+
+/* Navigation with enhanced styling */
+nav {
+    background: linear-gradient(135deg, #4da6ff 0%, #007bff 100%);
+    padding: 18px 30px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInLeft 0.6s ease-out;
+}
+
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 2s infinite linear;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    gap: 25px;
+}
+
+nav ul li {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+nav ul li:hover {
+    transform: translateY(-2px);
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    display: block;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 70%;
+}
+
+/* Main content area */
+main {
+    padding: 30px;
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+main h2 {
+    margin-bottom: 25px;
+    color: #0066cc;
+    font-size: 2.2em;
+    position: relative;
+    display: inline-block;
+    animation: slideInRight 0.6s ease-out 0.4s both;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #4da6ff, #007bff);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: slideInRight 0.8s ease-out 0.8s forwards;
+}
+
+/* Sections with enhanced styling */
+section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.15);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    transition: all 0.4s ease;
+    animation: fadeIn 0.6s ease-out both;
+    opacity: 0;
+}
+
+section:nth-child(1) { animation-delay: 0.5s; }
+section:nth-child(2) { animation-delay: 0.6s; }
+section:nth-child(3) { animation-delay: 0.7s; }
+section:nth-child(4) { animation-delay: 0.8s; }
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.25);
+    border-color: rgba(0, 123, 255, 0.3);
+}
+
+section h3 {
+    margin-top: 0;
+    color: #0052cc;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #66b3ff, #3399ff);
+    border-radius: 2px;
+}
+
+/* List styling */
+section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+section ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+section ul li:hover {
+    background: linear-gradient(90deg, rgba(102, 179, 255, 0.1), rgba(51, 153, 255, 0.05));
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+}
+
+section ul li:last-child {
+    border-bottom: none;
+}
+
+/* Buttons with animation */
+section ul li button {
+    padding: 8px 16px;
+    border: none;
+    background: linear-gradient(135deg, #4da6ff 0%, #007bff 100%);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    min-width: 80px;
+}
+
+section ul li button:hover {
+    background: linear-gradient(135deg, #3399ff 0%, #0066cc 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+    animation: pulse 1s infinite;
+}
+
+section ul li button:active {
+    transform: translateY(0);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 123, 255, 0.1);
+    animation: fadeIn 0.8s ease-out 0.9s both;
+}
+
+table th, table td {
+    padding: 15px;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+table th {
+    background: linear-gradient(135deg, #4da6ff 0%, #007bff 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+table th::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+table tr {
+    transition: all 0.3s ease;
+}
+
+table tr:hover {
+    background: rgba(102, 179, 255, 0.1);
+    transform: scale(1.01);
+}
+
+table tr:nth-child(even) {
+    background: rgba(230, 242, 255, 0.5);
+}
+
+table tr:nth-child(even):hover {
+    background: rgba(179, 217, 255, 0.7);
+}
+
+/* Loading animation for dynamic content */
+.loading {
+    background: linear-gradient(90deg, #f0f8ff 25%, #e6f2ff 50%, #f0f8ff 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    min-height: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav ul li a {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    table {
+        font-size: 0.9em;
+    }
+    
+    table th, table td {
+        padding: 10px 8px;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(204, 229, 255, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4da6ff 0%, #007bff 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #3399ff 0%, #0066cc 100%);
+}
+
+/* Notification badge animation */
+.badge {
+    background: #ff4757;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Add these styles to your existing student-dashboard.css */
+
+/* Data containers */
+#courses-container, #sessions-container, #attendance-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Lists */
+#courses-container ul, #sessions-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#courses-container li, #sessions-container li {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+#courses-container li:hover, #sessions-container li:hover {
+    background: #e9ecef;
+    border-color: #007bff;
+}
+
+/* Course and session info */
+.course-actions, .session-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.course-actions button, .session-actions button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.course-actions button:first-child {
+    background: #007bff;
+    color: white;
+}
+
+.course-actions button:last-child {
+    background: #6c757d;
+    color: white;
+}
+
+.session-actions button {
+    background: #28a745;
+    color: white;
+}
+
+.attendance-status {
+    padding: 6px 12px;
+    background: #e7f3ff;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Attendance table */
+#reports table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#reports th {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+#reports td {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#reports tr:hover {
+    background: #f8f9fa;
+}
+
+/* Attendance percentage styling */
+.attendance-percentage {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.attendance-percentage.good {
+    background: #d4edda;
+    color: #155724;
+}
+
+.attendance-percentage.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.attendance-percentage.poor {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* No data message */
+.no-data {
+    text-align: center;
+    padding: 30px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #reports table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .course-actions, .session-actions {
+        flex-direction: column;
+    }
+    
+    .course-actions button, .session-actions button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+/* Loading indicator */
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
