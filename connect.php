@@ -30,7 +30,7 @@ function sendJsonError($message) {
 $envPath = __DIR__ . "/env/connect.env";
 
 if (!file_exists($envPath)) {
-    sendJsonError("Environment file not found. Please create env/connect.env file. See connect.env.example for reference.");
+    sendJsonError("Environment file not found. Please create env/connect.env file.");
 }
 
 $env = parse_ini_file($envPath);
