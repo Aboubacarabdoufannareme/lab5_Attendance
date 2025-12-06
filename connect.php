@@ -27,7 +27,7 @@ function sendJsonError($message) {
 }
 
 // Load environment file
-$envPath = __DIR__ . "/env/connect.env";
+$envPath = __DIR__ . "/connect.env.examples";
 
 if (!file_exists($envPath)) {
     sendJsonError("Environment file not found. Please create env/connect.env file.");
