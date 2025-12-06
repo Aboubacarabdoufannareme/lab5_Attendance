@@ -1,4 +1,40 @@
 <?php
+
+// signup.php - ADD THIS DEBUG CODE AT THE TOP
+header("Content-Type: application/json");
+
+$response = [
+    "success" => false,
+    "message" => "",
+    "debug" => []
+];
+
+try {
+    // Debug: Check current directory and env file
+    $currentDir = __DIR__;
+    $envPath = __DIR__ . "/env/connect.env";
+    
+    $response["debug"] = [
+        "current_directory" => $currentDir,
+        "env_file_path" => $envPath,
+        "env_file_exists" => file_exists($envPath),
+        "env_folder_exists" => file_exists(__DIR__ . "/env"),
+        "env_folder_contents" => is_dir(__DIR__ . "/env") ? scandir(__DIR__ . "/env") : "Folder not found"
+    ];
+    
+    // Include DB connection
+    require_once __DIR__ . "/connect.php";
+    
+    // Rest of your existing code...
+    
+} catch (Exception $e) {
+    $response["message"] = "An error occurred: " . $e->getMessage();
+}
+
+echo json_encode($response);
+exit;
+
+
 // Error handler to catch fatal errors
 set_error_handler(function($errno, $errstr, $errfile, $errline) {
     header("Content-Type: application/json");
